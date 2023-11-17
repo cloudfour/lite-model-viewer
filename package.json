@@ -9,6 +9,10 @@
   "author": "Cloud Four (http://cloudfour.com)",
   "main": "lite-model-viewer.js",
   "scripts": {
+    "start": "npm run dev",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "peerDependencies": {
@@ -17,6 +21,7 @@
   },
   "devDependencies": {
     "@google/model-viewer": "^3.3.0",
-    "three": "^0.157.0"
+    "three": "^0.157.0",
+    "vite": "^5.0.0"
   }
 }
