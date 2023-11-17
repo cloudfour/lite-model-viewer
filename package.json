@@ -13,14 +13,36 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "run-s lint:js lint:css lint:prettier",
+    "lint:check": "run-s lint:*:check",
+    "lint:js": "eslint . --fix",
+    "lint:js:check": "eslint .",
+    "lint:css": "stylelint --fix \"**/*.css\"",
+    "lint:css:check": "stylelint \"**/*.css\"",
+    "lint:prettier": "prettier . --write",
+    "lint:prettier:check": "prettier . --check"
+  },
+  "eslintConfig": {
+    "extends": "plugin:@cloudfour/recommended"
+  },
+  "stylelint": {
+    "extends": "stylelint-config-cloudfour"
+  },
+  "prettier": {
+    "singleQuote": true
   },
   "peerDependencies": {
     "@google/model-viewer": "^3.3.0",
     "three": "^0.158.0"
   },
   "devDependencies": {
+    "@cloudfour/eslint-plugin": "^23.0.0",
     "@google/model-viewer": "^3.3.0",
+    "eslint": "^8.53.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.1.0",
+    "stylelint": "^15.11.0",
+    "stylelint-config-cloudfour": "^9.0.0",
     "three": "^0.157.0",
     "vite": "^5.0.0"
   }

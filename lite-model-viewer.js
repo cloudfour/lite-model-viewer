@@ -1,8 +1,8 @@
+// Placeholder Vite Stuff
 // import './style.css'
 // import javascriptLogo from './javascript.svg'
 // import viteLogo from '/vite.svg'
 // import { setupCounter } from './vite-project/counter.js'
-
 // document.querySelector('#app').innerHTML = `
 //   <div>
 //     <a href="https://vitejs.dev" target="_blank">
@@ -20,7 +20,6 @@
 //     </p>
 //   </div>
 // `
-
 // setupCounter(document.querySelector('#counter'))
 
-console.log("HELLO FROM VITE");
+console.log('HELLO FROM VITE');
