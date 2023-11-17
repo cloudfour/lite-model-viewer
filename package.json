@@ -7,8 +7,18 @@
   "repository": "cloudfour/lite-model-viewer",
   "bugs": "https://github.com/cloudfour/lite-model-viewer/issues",
   "license": "MIT",
-  "main": "lite-model-viewer.js",
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/lite-model-viewer.umd.cjs",
+  "module": "./dist/lite-model-viewer.js",
+  "exports": {
+    ".": {
+      "import": "./dist/lite-model-viewer.js",
+      "require": "./dist/lite-model-viewer.umd.cjs"
+    }
+  },
   "scripts": {
     "start": "npm run dev",
     "dev": "vite",

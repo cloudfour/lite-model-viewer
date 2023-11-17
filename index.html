@@ -9,6 +9,29 @@
     <div id="app">
       <h1>Test</h1>
     </div>
+    <lite-model-viewer
+      src="https://assets.codepen.io/62127/testing-3d_v0pprz.glb"
+      poster="https://cloudfour.com/wp-content/uploads/2023/11/testing-3d.webp"
+      ar-status="not-presenting"
+      ar=""
+      ar-modes="webxr scene-viewer quick-look"
+      camera-controls=""
+      shadow-intensity="1"
+      loading="eager"
+    >
+      <template>
+        <div class="progress-bar" slot="progress-bar">
+          <div class="update-bar"></div>
+        </div>
+        <button slot="ar-button" id="ar-button">View in your space</button>
+        <div id="ar-prompt">
+          <img
+            src="https://cloudfour.com/wp-content/uploads/2023/11/ar_hand_prompt.png"
+          />
+        </div>
+      </template>
+      <button>View Model</button>
+    </lite-model-viewer>
     <script type="module" src="/lite-model-viewer.js"></script>
   </body>
 </html>
