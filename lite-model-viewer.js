@@ -1,6 +1,9 @@
+// eslint-disable-next-line @cloudfour/n/file-extension-in-import
+import styles from './style.css?raw';
+console.log(styles);
+
 // Placeholder Vite Stuff
-// import './style.css'
-// import javascriptLogo from './javascript.svg'
+// Import javascriptLogo from './javascript.svg'
 // import viteLogo from '/vite.svg'
 // import { setupCounter } from './vite-project/counter.js'
 // document.querySelector('#app').innerHTML = `
