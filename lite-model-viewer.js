@@ -1,39 +1,54 @@
 /* eslint-disable no-undef */
-import '@google/model-viewer';
 
 // eslint-disable-next-line @cloudfour/n/file-extension-in-import
 import styles from './style.css?raw';
 
-console.log(styles);
+/**
+ * TODO:
+ * - [ ] lazy load google model viewer script rather than including it here
+ * - [ ] why is this version so much faster? https://codepen.io/spaceninja/pen/YzBYRPz
+ * - [ ] allow specifying a URL to model viewer script for local hosting
+ */
 
 class LiteModelViewer extends HTMLElement {
   connectedCallback() {
-    // Set up the click handler so it can be added and removed
-    this._clickHandler = () => this._activate();
+    const modelViewer = document.createElement('script');
+    modelViewer.type = 'module';
+    modelViewer.src =
+      'https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js';
+    document.body.append(modelViewer);
 
-    // Check if there's a poster attribute
-    const poster = this.getAttribute('poster');
-
-    // If so, set that as a property so we can display it as
-    // a background image
-    if (poster) {
-      this.style.setProperty('--poster', `url(${poster})`);
+    // Load the styles if they haven't been loaded yet
+    if (!document.querySelector('#lite-model-viewer-styles')) {
+      const stylesheet = document.createElement('style');
+      stylesheet.id = 'lite-model-viewer-styles';
+      stylesheet.textContent = styles;
+      document.head.append(stylesheet);
     }
+
+    // Check for styling attributes, to be set as custom properties
+    const poster = this.getAttribute('poster');
+    const width = this.getAttribute('width');
+    const height = this.getAttribute('height');
+    if (poster) this.style.setProperty('--poster', `url(${poster})`);
+    if (width) this.style.setProperty('--width', width);
+    if (height) this.style.setProperty('--height', height);
 
     // Wait to activate until `model-viewer` is available
     customElements.whenDefined('model-viewer').then(() => this._init());
   }
 
   _init() {
-    // Allow clicks anywhere in the element
-    this.addEventListener('click', this._clickHandler);
+    // Set up the click handler so it can be added and removed
+    this.addEventListener('click', this._activate);
+
     // Add a styling hook for when we're ready to interact
     this.classList.add('is-ready');
   }
 
   _activate() {
     // Remove click event so it doesn't conflict with model viewer
-    this.removeEventListener('click', this._clickHandler);
+    this.removeEventListener('click', this._activate);
 
     // Create the actual model viewer
     const modelViewer = document.createElement('model-viewer');
