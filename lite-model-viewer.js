@@ -5,8 +5,8 @@ import styles from './style.css?raw';
 
 /**
  * TODO:
- * - [ ] lazy load google model viewer script rather than including it here
- * - [ ] why is this version so much faster? https://codepen.io/spaceninja/pen/YzBYRPz
+ * - [ ] lazy load google model viewer script rather than including it here https://modelviewer.dev/examples/lighthouse.html
+ * - [ ] why is this version so much faster? https://modelviewer.dev/examples/loading/#customizeLoad / https://codepen.io/spaceninja/pen/YzBYRPz
  * - [ ] allow specifying a URL to model viewer script for local hosting
  */
 
