@@ -65,13 +65,13 @@ class LiteModelViewer extends HTMLElement {
   }
 
   _activate() {
-    // Remove click event so it doesn't conflict with model viewer
+    // Remove click event so it doesn't conflict with model-viewer
     this.removeEventListener("click", this._activate);
 
-    // Create the actual model viewer
+    // Create the actual model-viewer
     const modelViewer = document.createElement("model-viewer");
 
-    // Reproduce all of this element's attributes on the model viewer
+    // Reproduce all of this element's attributes on the model-viewer
     for (const attr of this.attributes) {
       modelViewer.setAttribute(attr.name, attr.value);
     }
@@ -83,7 +83,7 @@ class LiteModelViewer extends HTMLElement {
     // Query for an inner template (if any)
     const template = this.querySelector("template");
 
-    // If it exists, insert that into the model viewer
+    // If it exists, insert that into the model-viewer
     if (template) {
       modelViewer.insertAdjacentHTML("beforeend", template.innerHTML);
     }
@@ -101,7 +101,7 @@ class LiteModelViewer extends HTMLElement {
     // Wipe the previous contents
     this.innerHTML = "";
 
-    // Append the model viewer
+    // Append the model-viewer
     this.append(modelViewer);
 
     // Add a style hook for that state

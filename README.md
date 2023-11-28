@@ -40,5 +40,5 @@ Note that although we're adding a `<button>` element, it's just a visual indicat
   - See `<model-viewer>` docs for [more info on available attributes](https://modelviewer.dev).
 - Provide an optional `<template>` element to pass content into `<model-viewer>`, to set a custom progress bar, etc.
 - Set an optional `height` and `width` attribute, which will apply to both the `<lite-model-viewer>` preview and the lazy-loaded `<model-viewer>` element.
-- By default, Lite Model-Viewer will load the Model Viewer script from [Google's CDN](https://developers.google.com/speed/libraries#model-viewer). If you'd prefer to self-host the script, you can do so by including the script in your page with the `id="model-viewer-script"` attribute. If Lite Model-Viewer detects this script, it will not load the script from Google's CDN.
+- By default, Lite Model-Viewer will load the Model-Viewer script from [Google's CDN](https://developers.google.com/speed/libraries#model-viewer). If you'd prefer to self-host the script, you can do so by including the script in your page with the `id="model-viewer-script"` attribute. If Lite Model-Viewer detects this script, it will not load the script from Google's CDN.
 - See [Demo](https://lite-model-viewer.netlify.app/) for more details.
