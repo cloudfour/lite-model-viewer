@@ -24,22 +24,19 @@ model-viewer {
 }
 `;
 
-/**
- * TODO:
- * - [ ] lazy load google model viewer script rather than including it here https://modelviewer.dev/examples/lighthouse.html
- * - [ ] why is this version so much faster? https://modelviewer.dev/examples/loading/#customizeLoad / https://codepen.io/spaceninja/pen/YzBYRPz
- * - [ ] allow specifying a URL to model viewer script for local hosting
- */
-
 class LiteModelViewer extends HTMLElement {
   connectedCallback() {
-    const modelViewer = document.createElement("script");
-    modelViewer.type = "module";
-    modelViewer.src =
-      "https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js";
-    document.body.append(modelViewer);
+    // Load the model-viewer script if it hasn't been loaded yet
+    if (!document.querySelector("#lite-model-viewer-script")) {
+      const script = document.createElement("script");
+      script.id = "model-viewer-script";
+      script.type = "module";
+      script.src =
+        "https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js";
+      document.body.append(script);
+    }
 
-    // Load the styles if they haven't been loaded yet
+    // Inject the styles if they haven't been yet
     if (!document.querySelector("#lite-model-viewer-styles")) {
       const stylesheet = document.createElement("style");
       stylesheet.id = "lite-model-viewer-styles";
@@ -55,7 +52,7 @@ class LiteModelViewer extends HTMLElement {
     if (width) this.style.setProperty("--width", width);
     if (height) this.style.setProperty("--height", height);
 
-    // Wait to activate until `model-viewer` is available
+    // Wait to add click listener until `model-viewer` is available
     customElements.whenDefined("model-viewer").then(() => this._init());
   }
 
