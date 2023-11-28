@@ -1,5 +1,7 @@
 # Lite Model-Viewer
 
+[![NPM version](http://img.shields.io/npm/v/@cloudfour/lite-model-viewer.svg)](https://www.npmjs.org/package/@cloudfour/lite-model-viewer)
+
 Lite Model-Viewer is a web component to lazy-load `<model-viewer>` for improved performance.
 
 - [Demo](https://lite-model-viewer.netlify.app/)
