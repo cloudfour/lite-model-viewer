@@ -19,7 +19,6 @@ npm install @cloudfour/lite-model-viewer
   ar
   camera-controls
   shadow-intensity="1"
-  loading="eager"
 >
   <button>View Model</button>
 </lite-model-viewer>
