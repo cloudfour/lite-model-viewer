@@ -4,6 +4,10 @@ Lite Model-Viewer is a web component to lazy-load `<model-viewer>` for improved 
 
 - [Demo](https://lite-model-viewer.netlify.app/)
 
+## How Does It Work?
+
+The `<lite-model-viewer>` web component accepts all the same attributes as `<model-viewer>`, and will display a poster image if provided. When `<lite-model-viewer>` is clicked, it will inject the `<model-viewer>` element into the page, which will immediately activate and load the 3D file.
+
 ## Installation
 
 ```shell
@@ -22,8 +26,11 @@ npm install @cloudfour/lite-model-viewer
 >
   <button>View Model</button>
 </lite-model-viewer>
+
 <script type="module" src="lite-model-viewer.js"></script>
 ```
+
+Note that although we're adding a `<button>` element, it's just a visual indicator. There is a click event listener applied to the entire `<lite-model-viewer>` element, so the user can click anywhere on the poster image to trigger the load event.
 
 ## Features
 
@@ -31,4 +38,5 @@ npm install @cloudfour/lite-model-viewer
   - See `<model-viewer>` docs for [more info on available attributes](https://modelviewer.dev).
 - Provide an optional `<template>` element to pass content into `<model-viewer>`, to set a custom progress bar, etc.
 - Set an optional `height` and `width` attribute, which will apply to both the `<lite-model-viewer>` preview and the lazy-loaded `<model-viewer>` element.
+- By default, this will load the `<model-viewer>` script from [Google's CDN](https://developers.google.com/speed/libraries#model-viewer), but you can substitute a locally-hosted version by adding `id="model-viewer-script"` to your `<script>` element.
 - See [Demo](https://lite-model-viewer.netlify.app/) for more details.
