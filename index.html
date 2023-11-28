@@ -3,7 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>Lite Model-Viewer</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@cloudfour/patterns@16.3.1/dist/standalone.min.css"
+    />
+    <link
+      rel="icon"
+      href="https://cdn.jsdelivr.net/npm/@cloudfour/patterns@16.3.1/src/assets/favicons/favicon.ico"
+    />
     <style>
       .style-demo .progress-bar {
         background-color: rgb(0 0 0 / 0.5);
@@ -76,85 +84,112 @@
     </style>
   </head>
   <body>
-    <h1>Lite Model-Viewer</h1>
+    <div class="o-container o-container--prose o-container--pad">
+      <div class="o-container__content o-rhythm">
+        <h1>Lite Model-Viewer</h1>
 
-    <p>
-      By default, Lite Model-Viewer is unopinionated and largely unstyled. It
-      will show a simple loading bar along the top, and use browser-native
-      button styles.
-    </p>
+        <p class="u-text-small">
+          Return to the
+          <a href="https://github.com/cloudfour/lite-model-viewer"
+            >GitHub repo</a
+          >.
+        </p>
 
-    <lite-model-viewer
-      src="https://assets.codepen.io/62127/testing-3d_v0pprz.glb"
-      poster="https://cloudfour.com/wp-content/uploads/2023/11/testing-3d.webp"
-      ar
-      camera-controls
-      shadow-intensity="1"
-    >
-      <button>View Model</button>
-    </lite-model-viewer>
+        <p>
+          Lite Model-Viewer is a web component to lazy-load
+          <code>&lt;model-viewer&gt;</code> for improved performance.
+        </p>
 
-    <p>
-      You can use a <code>&lt;template&gt;</code> element to provide custom
-      markup for a
-      <a
-        href="https://modelviewer.dev/docs/index.html#entrydocs-loading-slots-progressBar"
-        >progress bar</a
-      >
-      and
-      <a
-        href="https://modelviewer.dev/docs/index.html#entrydocs-augmentedreality-slots-arButton"
-        >AR button</a
-      >, and style them as you see fit.
-    </p>
+        <p>
+          The <code>&lt;lite-model-viewer&gt;</code> web component accepts all
+          the same attributes as <code>&lt;model-viewer&gt;</code>, and will
+          display a poster image if provided. When
+          <code>&lt;lite-model-viewer&gt;</code> is clicked, it will inject the
+          <code>&lt;model-viewer&gt;</code> element into the page, which will
+          immediately activate and load the 3D file.
+        </p>
 
-    <lite-model-viewer
-      class="style-demo"
-      src="https://assets.codepen.io/62127/testing-3d_v0pprz.glb"
-      poster="https://cloudfour.com/wp-content/uploads/2023/11/testing-3d.webp"
-      ar
-      camera-controls
-      shadow-intensity="1"
-    >
-      <template>
-        <div class="progress-bar" slot="progress-bar">
-          <div class="update-bar"></div>
-        </div>
-        <button slot="ar-button" id="ar-button">View in your space</button>
-      </template>
-      <button>View Model</button>
-    </lite-model-viewer>
+        <p>
+          By default, Lite Model-Viewer is unopinionated and largely unstyled.
+          It will use the width and height you provide, and scale the poster
+          image to fit. Any content, such as a "View Model" button, will be
+          centered over the poster image. It will use the default progress
+          indicator, a simple loading bar along the top.
+        </p>
 
-    <p>
-      This demo adds custom elements for android users to improve their
-      experience. (<a
-        href="https://modelviewer.dev/examples/augmentedreality/#webXR"
-        >Learn more</a
-      >)
-    </p>
+        <p>(View source to see code for these demos.)</p>
 
-    <lite-model-viewer
-      class="style-demo"
-      src="https://assets.codepen.io/62127/testing-3d_v0pprz.glb"
-      poster="https://cloudfour.com/wp-content/uploads/2023/11/testing-3d.webp"
-      ar
-      camera-controls
-      shadow-intensity="1"
-    >
-      <template>
-        <div class="progress-bar" slot="progress-bar">
-          <div class="update-bar"></div>
-        </div>
-        <button slot="ar-button" id="ar-button">View in your space</button>
-        <div id="ar-prompt">
-          <img
-            src="https://cloudfour.com/wp-content/uploads/2023/11/ar_hand_prompt.png"
-          />
-        </div>
-        <style>
-          /* @see https://modelviewer.dev/examples/augmentedreality/ */
-          /* prettier-ignore */
-          @keyframes circle {
+        <lite-model-viewer
+          src="https://assets.codepen.io/62127/testing-3d_v0pprz.glb"
+          poster="https://cloudfour.com/wp-content/uploads/2023/11/testing-3d.webp"
+          ar
+          camera-controls
+          shadow-intensity="1"
+        >
+          <button>View Model</button>
+        </lite-model-viewer>
+
+        <p>
+          You can use a <code>&lt;template&gt;</code> element to provide custom
+          markup for a
+          <a
+            href="https://modelviewer.dev/docs/index.html#entrydocs-loading-slots-progressBar"
+            >progress bar</a
+          >
+          and
+          <a
+            href="https://modelviewer.dev/docs/index.html#entrydocs-augmentedreality-slots-arButton"
+            >AR button</a
+          >, and style them as you see fit.
+        </p>
+
+        <lite-model-viewer
+          class="style-demo"
+          src="https://assets.codepen.io/62127/testing-3d_v0pprz.glb"
+          poster="https://cloudfour.com/wp-content/uploads/2023/11/testing-3d.webp"
+          ar
+          camera-controls
+          shadow-intensity="1"
+        >
+          <template>
+            <div class="progress-bar" slot="progress-bar">
+              <div class="update-bar"></div>
+            </div>
+            <button slot="ar-button" id="ar-button">View in your space</button>
+          </template>
+          <button>View Model</button>
+        </lite-model-viewer>
+
+        <p>
+          This demo adds custom elements for android users to improve their
+          experience. (<a
+            href="https://modelviewer.dev/examples/augmentedreality/#webXR"
+            >Learn more</a
+          >)
+        </p>
+
+        <lite-model-viewer
+          class="style-demo"
+          src="https://assets.codepen.io/62127/testing-3d_v0pprz.glb"
+          poster="https://cloudfour.com/wp-content/uploads/2023/11/testing-3d.webp"
+          ar
+          camera-controls
+          shadow-intensity="1"
+        >
+          <template>
+            <div class="progress-bar" slot="progress-bar">
+              <div class="update-bar"></div>
+            </div>
+            <button slot="ar-button" id="ar-button">View in your space</button>
+            <div id="ar-prompt">
+              <img
+                src="https://cloudfour.com/wp-content/uploads/2023/11/ar_hand_prompt.png"
+              />
+            </div>
+            <style>
+              /* @see https://modelviewer.dev/examples/augmentedreality/ */
+              /* prettier-ignore */
+              @keyframes circle {
             from {
               transform: translateX(-50%) rotate(0deg) translateX(50px) rotate(0deg);
             }
@@ -162,31 +197,40 @@
               transform: translateX(-50%) rotate(360deg) translateX(50px) rotate(-360deg);
             }
           }
-          @keyframes elongate {
-            from {
-              transform: translateX(100px);
-            }
-            to {
-              transform: translateX(-100px);
-            }
-          }
-          model-viewer > #ar-prompt {
-            animation: elongate 2s infinite ease-in-out alternate;
-            bottom: 60px;
-            display: none;
-            left: 50%;
-            position: absolute;
-          }
-          model-viewer[ar-status="session-started"] > #ar-prompt {
-            display: block;
-          }
-          model-viewer > #ar-prompt > img {
-            animation: circle 4s linear infinite;
-          }
-        </style>
-      </template>
-      <button>View Model</button>
-    </lite-model-viewer>
+              @keyframes elongate {
+                from {
+                  transform: translateX(100px);
+                }
+                to {
+                  transform: translateX(-100px);
+                }
+              }
+              model-viewer > #ar-prompt {
+                animation: elongate 2s infinite ease-in-out alternate;
+                bottom: 60px;
+                display: none;
+                left: 50%;
+                position: absolute;
+              }
+              model-viewer[ar-status="session-started"] > #ar-prompt {
+                display: block;
+              }
+              model-viewer > #ar-prompt > img {
+                animation: circle 4s linear infinite;
+              }
+            </style>
+          </template>
+          <button>View Model</button>
+        </lite-model-viewer>
+
+        <p class="u-text-small">
+          Return to the
+          <a href="https://github.com/cloudfour/lite-model-viewer"
+            >GitHub repo</a
+          >.
+        </p>
+      </div>
+    </div>
 
     <script type="module" src="lite-model-viewer.js"></script>
   </body>

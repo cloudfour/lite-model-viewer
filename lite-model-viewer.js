@@ -27,7 +27,7 @@ model-viewer {
 class LiteModelViewer extends HTMLElement {
   connectedCallback() {
     // Load the model-viewer script if it hasn't been loaded yet
-    if (!document.querySelector("#lite-model-viewer-script")) {
+    if (!document.querySelector("#model-viewer-script")) {
       const script = document.createElement("script");
       script.id = "model-viewer-script";
       script.type = "module";
