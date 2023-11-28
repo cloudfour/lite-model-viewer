@@ -1,7 +1,27 @@
-/* eslint-disable no-undef */
+const styles = `lite-model-viewer {
+  background-image: var(--poster);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: grid;
+  height: var(--height, 300px);
+  place-items: center;
+  width: var(--width, 100%);
+}
 
-// eslint-disable-next-line @cloudfour/n/file-extension-in-import
-import styles from './style.css?raw';
+lite-model-viewer:not(.is-ready) > * {
+  display: none;
+}
+
+lite-model-viewer.is-active {
+  display: contents;
+}
+
+model-viewer {
+  height: var(--height, 300px);
+  width: var(--width, 100%);
+}
+`;
 
 /**
  * TODO:

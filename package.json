@@ -1,60 +1,15 @@
 {
   "name": "@cloudfour/lite-model-viewer",
   "version": "1.0.0",
-  "description": "A faster model viewer",
+  "description": "A lazy-loaded model viewer",
   "author": "Cloud Four (http://cloudfour.com)",
   "homepage": "https://github.com/cloudfour/lite-model-viewer",
   "repository": "cloudfour/lite-model-viewer",
   "bugs": "https://github.com/cloudfour/lite-model-viewer/issues",
   "license": "MIT",
   "type": "module",
-  "files": [
-    "dist"
-  ],
-  "main": "./dist/lite-model-viewer.umd.cjs",
-  "module": "./dist/lite-model-viewer.js",
-  "exports": {
-    ".": {
-      "import": "./dist/lite-model-viewer.js",
-      "require": "./dist/lite-model-viewer.umd.cjs"
-    }
-  },
+  "main": "lite-model-viewer.js",
   "scripts": {
-    "start": "npm run dev",
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "lint": "run-s lint:js lint:css lint:prettier",
-    "lint:check": "run-s lint:*:check",
-    "lint:js": "eslint . --fix",
-    "lint:js:check": "eslint .",
-    "lint:css": "stylelint --fix \"**/*.css\"",
-    "lint:css:check": "stylelint \"**/*.css\"",
-    "lint:prettier": "prettier . --write",
-    "lint:prettier:check": "prettier . --check"
-  },
-  "eslintConfig": {
-    "extends": "plugin:@cloudfour/recommended"
-  },
-  "stylelint": {
-    "extends": "stylelint-config-cloudfour"
-  },
-  "prettier": {
-    "singleQuote": true
-  },
-  "peerDependencies": {
-    "@google/model-viewer": "^3.3.0",
-    "three": "^0.158.0"
-  },
-  "devDependencies": {
-    "@cloudfour/eslint-plugin": "^23.0.0",
-    "@google/model-viewer": "^3.3.0",
-    "eslint": "^8.53.0",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^3.1.0",
-    "stylelint": "^15.11.0",
-    "stylelint-config-cloudfour": "^9.0.0",
-    "three": "^0.157.0",
-    "vite": "^5.0.0"
+    "start": "npx http-server ."
   }
 }

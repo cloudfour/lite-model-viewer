@@ -30,5 +30,5 @@ npm install @cloudfour/lite-model-viewer
 
 - Any attributes on `<lite-model-viewer>` will be applied to `<model-viewer>`.
 - Provide an optional `<template>` element to pass content into `<model-viewer>`, to set a custom progress bar, etc.
-- Set an optional height and width.
+- Set an optional `height` and `width` attribute, which will apply to both the `<lite-model-viewer>` preview and the lazy-loaded `<model-viewer>` element.
 - See [Demo](#) for more details.
