@@ -10,10 +10,6 @@ lite-model-viewer {
   width: var(--width, 100%);
 }
 
-lite-model-viewer:not(.is-ready) > * {
-  display: none;
-}
-
 lite-model-viewer.is-active {
   display: contents;
 }
@@ -26,16 +22,6 @@ model-viewer {
 
 class LiteModelViewer extends HTMLElement {
   connectedCallback() {
-    // Load the model-viewer script if it hasn't been loaded yet
-    if (!document.querySelector("#model-viewer-script")) {
-      const script = document.createElement("script");
-      script.id = "model-viewer-script";
-      script.type = "module";
-      script.src =
-        "https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js";
-      document.body.append(script);
-    }
-
     // Inject the styles if they haven't been yet
     if (!document.querySelector("#lite-model-viewer-styles")) {
       const stylesheet = document.createElement("style");
@@ -52,32 +38,39 @@ class LiteModelViewer extends HTMLElement {
     if (width) this.style.setProperty("--width", width);
     if (height) this.style.setProperty("--height", height);
 
-    // Wait to add click listener until `model-viewer` is available
-    customElements.whenDefined("model-viewer").then(() => this._init());
+    // Add a click listener to load the model-viewer script
+    this.addEventListener("click", this._loadScript);
   }
 
-  _init() {
-    // Set up the click handler so it can be added and removed
-    this.addEventListener("click", this._activate);
+  _loadScript() {
+    // Load the model-viewer script if it hasn't been loaded yet
+    if (!document.querySelector("#model-viewer-script")) {
+      const script = document.createElement("script");
+      script.id = "model-viewer-script";
+      script.type = "module";
+      script.src =
+        "https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js";
+      document.body.append(script);
+    }
 
-    // Add a styling hook for when we're ready to interact
-    this.classList.add("is-ready");
+    // Remove click listener so it doesn't conflict with model-viewer
+    this.removeEventListener("click", this._loadScript);
+
+    // Once `model-viewer` script is available, activate the element
+    customElements.whenDefined("model-viewer").then(() => this._activate());
   }
 
   _activate() {
-    // Remove click event so it doesn't conflict with model-viewer
-    this.removeEventListener("click", this._activate);
-
     // Create the actual model-viewer
     const modelViewer = document.createElement("model-viewer");
 
-    // Reproduce all of this element's attributes on the model-viewer
+    // Reproduce all of lite-model-viewer's attributes on the model-viewer
     for (const attr of this.attributes) {
       modelViewer.setAttribute(attr.name, attr.value);
     }
 
-    // The actual model-viewer should use eager loading, since we're handling
-    // the lazy loading ourselves
+    // The actual model-viewer should use eager loading,
+    // since we're handling the lazy loading ourselves
     modelViewer.setAttribute("loading", "eager");
 
     // Query for an inner template (if any)
@@ -88,8 +81,8 @@ class LiteModelViewer extends HTMLElement {
       modelViewer.insertAdjacentHTML("beforeend", template.innerHTML);
     }
 
-    // Start listening for loading progress so we can update a
-    // custom property for styling
+    // Start listening for loading progress
+    // so we can update a custom property for styling
     modelViewer.addEventListener("progress", (event) => {
       event.target.style.setProperty("--progress", event.detail.totalProgress);
       event.target.classList.toggle(
