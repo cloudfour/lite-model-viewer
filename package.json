@@ -1,6 +1,6 @@
 {
   "name": "@cloudfour/lite-model-viewer",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "description": "A lazy-loaded model-viewer web component",
   "author": "Cloud Four (http://cloudfour.com)",
   "homepage": "https://github.com/cloudfour/lite-model-viewer",
